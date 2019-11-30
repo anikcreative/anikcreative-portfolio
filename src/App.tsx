@@ -1,30 +1,34 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Colors } from "./theme/Solitude";
 import Nav from "./Navigation/Nav";
+import Backdrop from "./Backdrop";
+import ScrollArea, { ScrollPositionValues } from "./ScrollArea";
 
 const App: React.FunctionComponent = () => {
+  const [navBackgroundVisible, setNavBackgroundVisible] = useState<boolean>(false);
+  
+  const handleScroll = (values: ScrollPositionValues) => {
+    // Determines whether or not navbar should or should not have a transparent background
+    setNavBackgroundVisible(values.top > .07);
+  }
+
   return (
     <AppContainer className="app-container">
-      <Nav showBackground={true}/>
+      <Backdrop/>
+      <Nav showBackground={navBackgroundVisible}/>
       <Content>
-        <TestDiv>Hi what's up</TestDiv>
-        <TestDiv>Hi what's up</TestDiv>
-        <TestDiv>Hi what's up</TestDiv>
-        <TestDiv>Hi what's up</TestDiv>
-        <TestDiv>Hi what's up</TestDiv>
-        <TestDiv>Hi what's up</TestDiv>
-        <TestDiv>Hi what's up</TestDiv>
-        <TestDiv>Hi what's up</TestDiv>
-        <TestDiv>Hi what's up</TestDiv>
-        <TestDiv>Hi what's up</TestDiv>
-        <TestDiv>Hi what's up</TestDiv>
-        <TestDiv>Hi what's up</TestDiv>
-        <TestDiv>Hi what's up</TestDiv>
-        <TestDiv>Hi what's up</TestDiv>
-        <TestDiv>Hi what's up</TestDiv>
-        <TestDiv>Hi what's up</TestDiv>
-        <TestDiv>Hi what's up</TestDiv>
+        <ScrollArea onScroll={handleScroll}>
+          <TestDiv>Hi what's up</TestDiv>
+          <TestDiv>Hi what's up</TestDiv>
+          <TestDiv className="bg">Hi what's up</TestDiv>
+          <TestDiv>Hi what's up</TestDiv>
+          <TestDiv>Hi what's up</TestDiv>
+          <TestDiv className="bg">Hi what's up</TestDiv>
+          <TestDiv className="bg">Hi what's up</TestDiv>
+          <TestDiv className="bg">Hi what's up</TestDiv>
+          <TestDiv style={{background: '#ff3f1f'}}>Contact</TestDiv>
+        </ScrollArea>
       </Content>
     </AppContainer>
   );
@@ -36,7 +40,11 @@ const AppContainer = styled.div`
   width: 100vw;
   height: 100vh;
 
-  background: ${Colors.background1};
+  background: white;
+  border-top: 4px solid #ff3f1f;
+  border-right: 4px solid #ff3f1f;
+  border-bottom: 6px solid #ff3f1f;
+  border-left: 4px solid #ff3f1f;
 
   z-index: 1;
 
@@ -47,8 +55,9 @@ const AppContainer = styled.div`
 `;
 
 const Content = styled.main`
-  width: 100vw;
-  height: calc(100vh - 50px);
+  position: absolute;
+  width: 100%;
+  height: 100%;
   overflow: auto;
 
   z-index: 1;
@@ -56,8 +65,8 @@ const Content = styled.main`
 
 const TestDiv = styled.div`
   height: 500px;
-  background: red;
-  margin-bottom: 16px;
-  padding: 16px;
+  color: #aaa;
+  padding: 80px;
   font-size: 24px;
+  &.bg { background: rgba(220,220,220,0.8); }
 `;

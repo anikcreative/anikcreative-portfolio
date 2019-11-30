@@ -19,10 +19,13 @@ export default Nav;
 
 const StyledNav = styled.nav<NavProps>`
   display: block;
+  position: absolute;
   width: 100%;
-  height: 50px;
+  padding: 12px 16px;
 
   background: ${props => props.showBackground ? Colors.background1 : "none"};
+  color: ${Colors.textNormal1};
 
+  transition: 0.4s;
   z-index: 2;
 `;
