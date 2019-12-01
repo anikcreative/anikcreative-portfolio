@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { Colors } from "../theme/Solitude";
+import { Colors } from "../theme/Forge";
+import NavMenu from "./NavMenu";
 
 interface NavProps {
   showBackground: boolean;
@@ -11,21 +12,33 @@ const Nav: React.FunctionComponent<NavProps> = (props: NavProps): JSX.Element =>
       className="navbar"
       showBackground={props.showBackground}
     >
-      Anik
+      <HomeLink>Anik Bhattacharya</HomeLink>
+      <NavMenu/>
     </StyledNav>
   );
 }
 export default Nav;
 
 const StyledNav = styled.nav<NavProps>`
-  display: block;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   position: absolute;
-  width: 100%;
-  padding: 12px 16px;
+  width: calc(100% - 24px);
 
-  background: ${props => props.showBackground ? Colors.background1 : "none"};
-  color: ${Colors.textNormal1};
+  background: ${props => props.showBackground ? Colors.light : "none"};
 
-  transition: 0.4s;
+  transition: 0.3s;
   z-index: 2;
+`;
+
+const HomeLink = styled.span`
+  padding: 16px 20px;
+  
+  font-size: 1.3rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: ${Colors.textDefault};
 `;

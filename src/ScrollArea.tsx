@@ -1,6 +1,6 @@
 import React from "react";
 import { Scrollbars, positionValues } from "react-custom-scrollbars";
-import { Colors } from "./theme/Solitude";
+import { Colors } from "./theme/Forge";
 
 export interface ScrollPositionValues extends positionValues {};
 interface ScrollAreaProps {
@@ -11,12 +11,13 @@ const ScrollArea: React.FunctionComponent<ScrollAreaProps> = (props: ScrollAreaP
   const renderScrollbarTrack = (trackProps: any) => {
     const { style, ...rest } = trackProps;
     const customStyles = {
-      width: '20px',
+      width: '24px',
       top: '0',
       right: '0',
       bottom: '0',
       borderRadius: '0',
-      backgroundColor: `rgba(210, 220, 225, 0.2)`,
+      borderLeft: `4px solid ${Colors.accent}`,
+      backgroundColor: `${Colors.accent}`,
     };
 
     return (
@@ -31,7 +32,8 @@ const ScrollArea: React.FunctionComponent<ScrollAreaProps> = (props: ScrollAreaP
   const renderScrollbarThumb = (thumbProps: any) => {
     const { style, ...rest } = thumbProps;
     const customStyles = {
-      backgroundColor: `${Colors.textNormal1}`,
+      backgroundColor: `${Colors.light}`,
+
     };
 
     return (
