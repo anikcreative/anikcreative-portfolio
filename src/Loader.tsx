@@ -1,21 +1,29 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import useInterval from '@use-it/interval';
+import { Colors } from "./theme/Forge";
 
+type LoaderStates = "active" | "complete" | "hidden";
 interface LoaderProps {
   imagesLoaded?: boolean;
 }
 const Loader: React.FunctionComponent<LoaderProps> = (props: LoaderProps): JSX.Element => {
   const [completion, setCompletion] = useState<number>(0.00);      // value from 0.00 to 1.00, determining current completion of loading
-  const delay: number = 50;                                        // delay, in milliseconds
-  const progress: any = useInterval(() => {
-    if (completion <= 1.00)
-      setCompletion((currentCompletion) => currentCompletion + 0.01);
+  const [loaderState, setLoaderState] = useState<LoaderStates>("active");
+  const [delay, setDelay] = useState<number | null>(10);
+  
+  useInterval(() => {
+    setCompletion((currentCompletion) => currentCompletion + 0.01);
   }, delay);
   
   useEffect(() => {
-    if (completion > 1.00) clearInterval(progress);
-    else console.log(completion);
+    if (completion > 1.20) {
+      setDelay(null);
+      if (loaderState === "active") {
+        setLoaderState("complete");
+        setTimeout(() => setLoaderState("hidden"), 825);
+      }
+    }
   }, [completion]);
 
   const getTopCompletion = (currentCompletion: number): number => {
@@ -40,7 +48,7 @@ const Loader: React.FunctionComponent<LoaderProps> = (props: LoaderProps): JSX.E
   }
 
   return (
-    <StyledLoader>
+    <StyledLoader loaderState={loaderState}>
       <ProgressBarTop completion={getTopCompletion(completion)}/>
       <ProgressBarRight completion={getRightCompletion(completion)}/>
       <ProgressBarBottom completion={getBottomCompletion(completion)}/>
@@ -50,18 +58,53 @@ const Loader: React.FunctionComponent<LoaderProps> = (props: LoaderProps): JSX.E
 }
 export default Loader;
 
-const StyledLoader = styled.div`
+interface StyledLoaderProps {
+  loaderState: LoaderStates;
+}
+const StyledLoader = styled.div<StyledLoaderProps>`
+  display: ${props => props.loaderState === "hidden" ?
+    "none" : "block"};
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 100vw;
+  height: 100vh;
+
+  background: ${Colors.white};
+  opacity: ${props => props.loaderState === "active" ?
+    "1.0" : "0.0"};
+  transition: 0.8s;
   z-index: 1000;
 `;
 
 interface ProgressBarProps {
   completion: number;
 }
-const ProgressBarTop = styled.div<ProgressBarProps>`
+const ProgressBarBase = styled.div<ProgressBarProps>`
+  position: absolute;
+  background: ${Colors.accent};
 `;
-const ProgressBarRight = styled.div<ProgressBarProps>`
+const ProgressBarTop = styled(ProgressBarBase)`
+  top: 0;
+  left: 0;
+  width: ${props => (props.completion * 100)}%;
+  height: 4px;
 `;
-const ProgressBarBottom = styled.div<ProgressBarProps>`
+const ProgressBarRight = styled(ProgressBarBase)`
+  top: 0;
+  right: 0;
+  width: 4px;
+  height: ${props => (props.completion * 100)}%;
 `;
-const ProgressBarLeft = styled.div<ProgressBarProps>`
+const ProgressBarBottom = styled(ProgressBarBase)`
+  bottom: 0;
+  right: 0;
+  width: ${props => (props.completion * 100)}%;
+  height: 4px;
+`;
+const ProgressBarLeft = styled(ProgressBarBase)`
+  bottom: 0;
+  left: 0;
+  width: 4px;
+  height: ${props => (props.completion * 100)}%;
 `;

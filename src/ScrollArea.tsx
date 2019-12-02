@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Scrollbars, positionValues } from "react-custom-scrollbars";
 import { Colors } from "./theme/Forge";
 
@@ -11,20 +11,19 @@ const ScrollArea: React.FunctionComponent<ScrollAreaProps> = (props: ScrollAreaP
   const renderScrollbarTrack = (trackProps: any) => {
     const { style, ...rest } = trackProps;
     const customStyles = {
-      width: '24px',
+      width: '20px',
       top: '0',
       right: '0',
       bottom: '0',
       borderRadius: '0',
-      borderLeft: `4px solid ${Colors.accent}`,
-      backgroundColor: `${Colors.accent}`,
+      backgroundColor: `transparent`,
     };
 
     return (
       <div
         {...rest}
         style={{ ...style, ...customStyles }}
-        className="track-vertical"
+        className="scrollbar-track-vertical"
       />
     );
   }
@@ -32,15 +31,15 @@ const ScrollArea: React.FunctionComponent<ScrollAreaProps> = (props: ScrollAreaP
   const renderScrollbarThumb = (thumbProps: any) => {
     const { style, ...rest } = thumbProps;
     const customStyles = {
-      backgroundColor: `${Colors.light}`,
-
+      backgroundColor: `${Colors.dark}`,
+      zIndex: 2,
     };
 
     return (
       <div
         {...rest}
         style={{ ...style, ...customStyles }}
-        className="thumb-vertical"
+        className="scrollbar-thumb-vertical"
       />
     );
   }

@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { Colors } from "../../theme/Forge";
+import { ContentSectionProps } from "../ContentSectionProps";
 
-const Intro: React.FunctionComponent = (): JSX.Element => {
+const Intro: React.FunctionComponent<ContentSectionProps> = 
+  (props: ContentSectionProps): JSX.Element => {
   return (
     <StyledIntro>
       <IntroMessage>
@@ -12,15 +14,32 @@ const Intro: React.FunctionComponent = (): JSX.Element => {
     </StyledIntro>
   );
 }
-export default Intro
+export default Intro;
+
+export const IntroSpacer: React.FunctionComponent<ContentSectionProps> = 
+  (props: ContentSectionProps): JSX.Element => {
+  return (
+    <StyledIntroSpacer
+      ref={props.containerRef}
+    />
+  );
+}
 
 const StyledIntro = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
+  min-height: 480px;
   padding-left: calc(10% + 40px);
-
   background: ${Colors.light};
+`;
+
+const StyledIntroSpacer = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 480px;
+  background: none;
 `;
 
 const IntroMessage = styled.div`
