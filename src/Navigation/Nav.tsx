@@ -32,7 +32,17 @@ const StyledNav = styled.nav<NavProps>`
 
   background: ${props => props.backgroundColor};
   color: ${props => props.textColor};
+
+  transition: background 0.4s;
   z-index: 5;
+
+  @media screen and (max-width: 1044px) {
+    padding: 0 20px;
+  }
+
+  @media screen and (min-width: 1044px) {
+    padding: 0 calc(50% - 512px);
+  }
 `;
 
 const HomeLink = styled.span`

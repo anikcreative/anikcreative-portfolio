@@ -14,7 +14,7 @@ import Loader from "./Loader";
 
 const App: React.FunctionComponent = () => {
   const [borderColor, setBorderColor] = useState<string>(Colors.accent);
-  const [navBackgroundColor, setNavBackgroundColor] = useState<string>(Colors.light);
+  const [navBackgroundColor, setNavBackgroundColor] = useState<string>('transparent');
   const [navTextColor, setNavTextColor] = useState<string>(Colors.textDefault);
 
   const [invertedScrollThumbHeight, setInvertedScrollThumbHeight] = useState<number>(0);
@@ -27,6 +27,9 @@ const App: React.FunctionComponent = () => {
 
   // Perform animation stage changes based on scroll position
   const handleScroll = (values: ScrollPositionValues) => {
+    if (values.scrollTop < 240) setNavBackgroundColor('transparent');
+    else setNavBackgroundColor(Colors.light);
+
     if (contentContainerRef && contentContainerRef.current
       && footerContainerRef && footerContainerRef.current) {
       const scrollbarVerticalThumb: HTMLDivElement | null = contentContainerRef.current.querySelector('.scrollbar-thumb-vertical');
@@ -51,7 +54,9 @@ const App: React.FunctionComponent = () => {
       borderColor={borderColor}
     >
       <Loader/>
-      <Backdrop/>
+      <Backdrop
+        headlineTextColor={Colors.textDefault}
+      />
       <Nav
         backgroundColor={navBackgroundColor}
         textColor={navTextColor}
@@ -95,12 +100,12 @@ const AppContainer = styled.div<AppContainerProps>`
   background: none;
   border-top: 4px solid ${props => props.borderColor};
   border-right: 4px solid ${props => props.borderColor};
-  border-bottom: 5px solid ${props => props.borderColor};
+  border-bottom: 4px solid ${props => props.borderColor};
   border-left: 4px solid ${props => props.borderColor};
 
   z-index: 1;
   transform: translate3d(0);
-  transition: 0.4s;
+  transition: border-color 0.4s;
 
   &,
   & * {
@@ -129,6 +134,7 @@ const Content = styled.main<ContentProps>`
       width: 100%;
       height: 50px;
       background: ${props => props.navBackgroundColor};
+      transition: background 0.4s;
       z-index: 1;
     }
   }
