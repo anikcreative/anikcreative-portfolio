@@ -37,7 +37,7 @@ const StyledNav = styled.nav<NavProps>`
   z-index: 5;
 
   @media screen and (max-width: 1044px) {
-    padding: 0 20px;
+    padding: 0 40px;
   }
 
   @media screen and (min-width: 1044px) {
@@ -46,7 +46,7 @@ const StyledNav = styled.nav<NavProps>`
 `;
 
 const HomeLink = styled.span`
-  padding: 16px 20px;
+  padding: 16px 0;
   
   font-size: 1.3rem;
   font-weight: 800;

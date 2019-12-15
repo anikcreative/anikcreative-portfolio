@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { ContentSectionProps } from "../ContentSectionProps";
 import { Section, Heading1 } from "../../Components";
+import { Colors } from "../../theme/Forge";
 
 const Intro: React.FunctionComponent<ContentSectionProps> = 
   (props: ContentSectionProps): JSX.Element => {
@@ -25,6 +26,7 @@ export const IntroSpacer: React.FunctionComponent<ContentSectionProps> =
 }
 
 const StyledIntro = styled(Section)`
+  color: ${Colors.white};
 `;
 
 const StyledIntroSpacer = styled(Section)`

@@ -10,7 +10,9 @@ interface BackdropProps {
 }
 const Backdrop: React.FunctionComponent<BackdropProps> = (props: BackdropProps): JSX.Element => {
   const backdropImages: string[] = [
-    __IMAGES__[1]
+    __IMAGES__[1],
+    __IMAGES__[2],
+    __IMAGES__[3],
   ];
 
   const renderImageSrc = (imageIndex: number) => {
@@ -28,7 +30,8 @@ const Backdrop: React.FunctionComponent<BackdropProps> = (props: BackdropProps):
       <Images>
         <StyledBackdropImage
           className="backdrop-image"
-          src={renderImageSrc(0)}
+          src={renderImageSrc(2)}
+          forcedHeightBreakpoint={1140}
           zIndex={5}
         />
       </Images>
@@ -62,7 +65,7 @@ const Screen = styled.div`
   height: 100%;
 
   background: ${Colors.dark};
-  opacity: 0.3;
+  opacity: 0.1;
   z-index: 5;
 `;
 const Images = styled.div`
@@ -71,17 +74,26 @@ const Images = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
+
+  filter: contrast(1.2);
   z-index: 3;
 `;
 interface StyledBackdropImageProps {
+  forcedHeightBreakpoint: number;
   zIndex: number;
 }
 const StyledBackdropImage = styled.img<StyledBackdropImageProps>`
-  width: 100%;
-  height: 100%;
-
+  object-fit: cover;
   transform: translateZ(0);
   z-index: ${props => props.zIndex};
+
+  @media screen and (max-width: ${props => props.forcedHeightBreakpoint}px) {
+    max-height: 100%;
+  }
+
+  @media screen and (min-width: ${props => props.forcedHeightBreakpoint}px) {
+    max-width: 100%;
+  }
 `;
 
 
