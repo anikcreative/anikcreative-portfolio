@@ -6,9 +6,10 @@ import Nav from "./Navigation/Nav";
 import Backdrop from "./Backdrop";
 import {
   IntroSpacer,
+  Intro,
   BackdropImageSpacer,
   Contact, Footer
-} from "./Content";
+} from "./Layout";
 import ScrollArea, { ScrollPositionValues } from "./ScrollArea";
 import Loader from "./Loader";
 
@@ -16,19 +17,27 @@ const App: React.FunctionComponent = () => {
   const [borderColor, setBorderColor] = useState<string>(Colors.accent);
   const [navBackgroundColor, setNavBackgroundColor] = useState<string>('transparent');
   const [navTextColor, setNavTextColor] = useState<string>(Colors.textDefault);
+  const [currentScrollTop, setCurrentScrollTop] = useState<number>(0);
 
   const [invertedScrollThumbHeight, setInvertedScrollThumbHeight] = useState<number>(0);
 
   // Container refs for each section
   const contentContainerRef = useRef<HTMLDivElement>(null);
-  const backdropImage2ContainerRef = useRef<HTMLDivElement>(null);
   const contactContainerRef = useRef<HTMLDivElement>(null);
   const footerContainerRef = useRef<HTMLDivElement>(null);
 
   // Perform animation stage changes based on scroll position
   const handleScroll = (values: ScrollPositionValues) => {
-    if (values.scrollTop < 240) setNavBackgroundColor('transparent');
-    else setNavBackgroundColor(Colors.light);
+    setCurrentScrollTop(values.scrollTop);
+
+    if (values.scrollTop < 240) {
+      setNavBackgroundColor('transparent');
+      setNavTextColor(Colors.textDefault);
+    }
+    else {
+      setNavBackgroundColor(Colors.light);
+      setNavTextColor(Colors.textDefault);
+    }
 
     if (contentContainerRef && contentContainerRef.current
       && footerContainerRef && footerContainerRef.current) {
@@ -56,6 +65,7 @@ const App: React.FunctionComponent = () => {
       <Loader/>
       <Backdrop
         headlineTextColor={Colors.textDefault}
+        currentScrollTop={currentScrollTop}
       />
       <Nav
         backgroundColor={navBackgroundColor}
@@ -69,6 +79,8 @@ const App: React.FunctionComponent = () => {
         <ScrollArea onScroll={handleScroll}>
           <IntroSpacer/>
 
+          <Intro />
+
           <TestDiv className="bg">Hi what's up</TestDiv>
           <TestDiv className="bg">Hi what's up</TestDiv>
           <TestDiv>Hi what's up</TestDiv>
@@ -77,7 +89,7 @@ const App: React.FunctionComponent = () => {
           <TestDiv className="bg">Hi what's up</TestDiv>
           <TestDiv className="bg">Hi what's up</TestDiv>
 
-          <BackdropImageSpacer containerRef={backdropImage2ContainerRef}/>
+          <BackdropImageSpacer />
 
           <Contact containerRef={contactContainerRef}/>
 
@@ -100,11 +112,11 @@ const AppContainer = styled.div<AppContainerProps>`
   background: none;
   border-top: 4px solid ${props => props.borderColor};
   border-right: 4px solid ${props => props.borderColor};
-  border-bottom: 4px solid ${props => props.borderColor};
+  border-bottom: 6px solid ${props => props.borderColor};
   border-left: 4px solid ${props => props.borderColor};
 
   z-index: 1;
-  transform: translate3d(0);
+  transform: translateZ(0);
   transition: border-color 0.4s;
 
   &,
@@ -123,6 +135,7 @@ const Content = styled.main<ContentProps>`
   height: 100%;
   overflow: auto;
 
+  transform: translateZ(0);
   z-index: 3;
 
   & .scrollbar-track-vertical {
@@ -140,7 +153,7 @@ const Content = styled.main<ContentProps>`
   }
 
   & .scrollbar-thumb-vertical {
-    transform: translate3d(0);
+    transform: translateZ(0);
 
     :after {
       content: "";
@@ -151,6 +164,7 @@ const Content = styled.main<ContentProps>`
       height: ${props => props.invertedScrollThumbHeight}px;
       max-height: 100%;
       background: ${Colors.light};
+      transform: translateZ(0);
       z-index: 4;
     }
   }

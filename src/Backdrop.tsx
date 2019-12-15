@@ -1,23 +1,43 @@
-import React from "react";
+import React, { useMemo } from "react";
 import styled from "styled-components";
-import { Intro } from "./Content";
+import { Intro } from "./Layout";
 import { Colors } from "./theme/Forge";
+import { __IMAGES__ } from "./images";
 
 interface BackdropProps {
   headlineTextColor: string;
+  currentScrollTop: number;
 }
 const Backdrop: React.FunctionComponent<BackdropProps> = (props: BackdropProps): JSX.Element => {
+  const backdropImages: string[] = [
+    __IMAGES__[1]
+  ];
+
+  const renderImageSrc = (imageIndex: number) => {
+    return `images/${backdropImages[imageIndex]}`;
+  }
+
   return (
-    <StyledBackdrop>
+    <StyledBackdrop
+      className="backdrop"
+    >
       <LeftMarginDecoration/>
       <RightMarginDecoration/>
-      <Headlines textColor={props.headlineTextColor}>
-        <Intro/>
-      </Headlines>
+
+      <Screen />
+      <Images>
+        <StyledBackdropImage
+          className="backdrop-image"
+          src={renderImageSrc(0)}
+          zIndex={5}
+        />
+      </Images>
     </StyledBackdrop>
   );
 }
 export default Backdrop;
+
+
 
 const StyledBackdrop = styled.div`
   position: absolute;
@@ -27,39 +47,44 @@ const StyledBackdrop = styled.div`
   left: 0;
   background: ${Colors.light};
   
+  transform: translateZ(0);
   z-index: 1;
   overflow: hidden;
 `;
 
-interface HeadlineProps {
-  textColor: string;
-}
-const Headlines = styled.div<HeadlineProps>`
-  display: inline-block;
+
+
+const Screen = styled.div`
   position: absolute;
-  top: calc(10% + 80px);
-  max-width: 800px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 
-  color: ${props => props.textColor};
-
-  & > h1 {
-    font-size: 3.2rem;
-    font-weight: 800;
-    margin: 4px 0;
-  }
-
-  @media screen and (max-width: 1044px) {
-    margin-left: 40px;
-    margin-right: 40px;
-    width: calc(100% - 80px);
-  }
-
-  @media screen and (min-width: 1044px) {
-    margin-left: calc(50% - 492px);
-    margin-right: 0;
-    width: 50%;
-  }
+  background: ${Colors.dark};
+  opacity: 0.3;
+  z-index: 5;
 `;
+const Images = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+`;
+interface StyledBackdropImageProps {
+  zIndex: number;
+}
+const StyledBackdropImage = styled.img<StyledBackdropImageProps>`
+  width: 100%;
+  height: 100%;
+
+  transform: translateZ(0);
+  z-index: ${props => props.zIndex};
+`;
+
+
 
 const MarginDecorationBase = styled.div`
   position: absolute;
@@ -68,6 +93,8 @@ const MarginDecorationBase = styled.div`
 
   background: url('https://i.imgur.com/jyNpF0D.png');
   background-repeat: repeat;
+
+  z-index: 6;
 
   @media screen and (max-width: 1044px) {
     display: none;
@@ -85,7 +112,6 @@ const LeftMarginDecoration = styled(MarginDecorationBase)`
     width: calc(100% - 1044px);
   }
 `;
-
 const RightMarginDecoration = styled(MarginDecorationBase)`
   right: 0;
   @media screen and (min-width: 1280px) {
