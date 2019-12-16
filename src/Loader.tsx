@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import useInterval from '@use-it/interval';
-import { Colors } from "./theme/Forge";
+import { Colors } from "./theme/Theme";
 
 type LoaderStates = "active" | "complete" | "hidden";
 interface LoaderProps {

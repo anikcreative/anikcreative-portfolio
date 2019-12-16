@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Colors } from "../theme/Forge";
+import { Colors } from "../theme/Theme";
 
 const NavMenu: React.FunctionComponent = (): JSX.Element => {
   return (

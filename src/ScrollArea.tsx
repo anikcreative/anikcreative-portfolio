@@ -1,13 +1,17 @@
-import React, { useRef } from "react";
+import React, { useContext } from "react";
 import { Scrollbars, positionValues } from "react-custom-scrollbars";
-import { Colors } from "./theme/Forge";
+import { Colors } from "./theme/Theme";
+import { AppContext } from "./Contexts/AppContext";
 
 export interface ScrollPositionValues extends positionValues {};
 interface ScrollAreaProps {
   children?: React.ReactNode | React.ReactNodeArray;
-  onScroll: (values: positionValues) => void;
 }
 const ScrollArea: React.FunctionComponent<ScrollAreaProps> = (props: ScrollAreaProps): JSX.Element => {
+  const appContext = useContext(AppContext);
+
+  const handleScroll = (values: positionValues) => appContext.setCurrentScrollTop(values.scrollTop);
+
   const renderScrollbarTrack = (trackProps: any) => {
     const { style, ...rest } = trackProps;
     const customStyles = {
@@ -46,7 +50,7 @@ const ScrollArea: React.FunctionComponent<ScrollAreaProps> = (props: ScrollAreaP
 
   return (
     <Scrollbars
-      onScrollFrame={props.onScroll}
+      onScrollFrame={handleScroll}
       renderTrackVertical={renderScrollbarTrack}
       renderThumbVertical={renderScrollbarThumb}
     >

@@ -1,38 +1,39 @@
-import React, { useEffect, useRef, useState } from "react";
-import ReactDOM from "react-dom";
+import React, { useContext, useLayoutEffect, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { Colors } from "./theme/Forge";
+import { Colors } from "./theme/Theme";
 import Nav from "./Navigation/Nav";
 import Backdrop from "./Backdrop";
 import {
-  IntroSpacer,
   Intro,
   BackdropImageSpacer,
   Contact, Footer
 } from "./Layout";
-import ScrollArea, { ScrollPositionValues } from "./ScrollArea";
+import ScrollArea from "./ScrollArea";
 import Loader from "./Loader";
+import { AppContext } from "./Contexts/AppContext";
 
 const App: React.FunctionComponent = () => {
+  const appContext = useContext(AppContext);
   const [borderColor, setBorderColor] = useState<string>(Colors.accent);
   const [navBackgroundColor, setNavBackgroundColor] = useState<string>('transparent');
-  const [navTextColor, setNavTextColor] = useState<string>(Colors.textDefault);
-  const [currentScrollTop, setCurrentScrollTop] = useState<number>(0);
+  const [navTextColor, setNavTextColor] = useState<string>(Colors.white);
 
   const [invertedScrollThumbHeight, setInvertedScrollThumbHeight] = useState<number>(0);
+  const [invertedScrollThumbAnchor, setInvertedScrollThumbAnchor] = useState<"top" | "bottom">("top");
 
   // Container refs for each section
   const contentContainerRef = useRef<HTMLDivElement>(null);
+  const testDivContainerRef = useRef<HTMLDivElement>(null);
   const contactContainerRef = useRef<HTMLDivElement>(null);
   const footerContainerRef = useRef<HTMLDivElement>(null);
 
   // Perform animation stage changes based on scroll position
-  const handleScroll = (values: ScrollPositionValues) => {
-    setCurrentScrollTop(values.scrollTop);
+  const handleScroll = () => {
+    const scrollTop: number = appContext.currentScrollTop;
 
-    if (values.scrollTop < 240) {
+    if (scrollTop < 80) {
       setNavBackgroundColor('transparent');
-      setNavTextColor(Colors.textDefault);
+      setNavTextColor(Colors.white);
     }
     else {
       setNavBackgroundColor(Colors.light);
@@ -40,22 +41,42 @@ const App: React.FunctionComponent = () => {
     }
 
     if (contentContainerRef && contentContainerRef.current
+      && testDivContainerRef && testDivContainerRef.current
       && footerContainerRef && footerContainerRef.current) {
       const scrollbarVerticalThumb: HTMLDivElement | null = contentContainerRef.current.querySelector('.scrollbar-thumb-vertical');
-      const footerBoundingClientRectTop: number = footerContainerRef.current.getBoundingClientRect().top;
+      const testDivBounds: ClientRect | DOMRect = testDivContainerRef.current.getBoundingClientRect();
+      const footerBounds: ClientRect | DOMRect = footerContainerRef.current.getBoundingClientRect();
+
       if (scrollbarVerticalThumb) {
-        const scrollThumbBottom: number = scrollbarVerticalThumb.getBoundingClientRect().bottom;
-        if (scrollThumbBottom <= footerBoundingClientRectTop) setInvertedScrollThumbHeight(0);
-        else setInvertedScrollThumbHeight(scrollThumbBottom - footerBoundingClientRectTop);
+        const scrollThumbBounds: ClientRect | DOMRect = scrollbarVerticalThumb.getBoundingClientRect();
+
+        if (scrollThumbBounds.bottom <= testDivBounds.top) {
+          setInvertedScrollThumbAnchor("top");
+          setInvertedScrollThumbHeight(scrollThumbBounds.height)
+        }
+        else if (scrollThumbBounds.bottom <= testDivBounds.bottom) {
+          setInvertedScrollThumbAnchor("top");
+          setInvertedScrollThumbHeight(testDivBounds.top - scrollThumbBounds.top);
+        }
+        else if (scrollThumbBounds.bottom <= footerBounds.top) {
+          setInvertedScrollThumbAnchor("bottom");
+          setInvertedScrollThumbHeight(0);
+        }
+        else {
+          setInvertedScrollThumbAnchor("bottom");
+          setInvertedScrollThumbHeight(scrollThumbBounds.bottom - footerBounds.top);
+        }
       }
     }
 
     if (footerContainerRef && footerContainerRef.current
-      && values.scrollTop >= footerContainerRef.current.offsetTop - window.innerHeight) {
-      setBorderColor(Colors.dark);
+      && scrollTop >= footerContainerRef.current.offsetTop - window.innerHeight) {
+      setBorderColor(Colors.medium);
     }
     else setBorderColor(Colors.accent);
   }
+  useLayoutEffect(handleScroll, [false]);
+  useEffect(handleScroll, [appContext.currentScrollTop]);
 
   return (
     <AppContainer
@@ -65,7 +86,6 @@ const App: React.FunctionComponent = () => {
       <Loader/>
       <Backdrop
         headlineTextColor={Colors.textDefault}
-        currentScrollTop={currentScrollTop}
       />
       <Nav
         backgroundColor={navBackgroundColor}
@@ -74,14 +94,19 @@ const App: React.FunctionComponent = () => {
       <Content
         navBackgroundColor={navBackgroundColor}
         invertedScrollThumbHeight={invertedScrollThumbHeight}
+        invertedScrollThumbAnchor={invertedScrollThumbAnchor}
         ref={contentContainerRef}
       >
-        <ScrollArea onScroll={handleScroll}>
-          <IntroSpacer/>
-
+        <ScrollArea>
           <Intro />
 
-          <TestDiv className="bg">Hi what's up</TestDiv>
+          <TestDiv
+            ref={testDivContainerRef}
+            className="bg-2"
+          >
+            Hi what's up
+          </TestDiv>
+
           <TestDiv className="bg">Hi what's up</TestDiv>
           <TestDiv>Hi what's up</TestDiv>
           <TestDiv>Hi what's up</TestDiv>
@@ -128,6 +153,7 @@ const AppContainer = styled.div<AppContainerProps>`
 interface ContentProps {
   navBackgroundColor: string;
   invertedScrollThumbHeight: number;
+  invertedScrollThumbAnchor: "top" | "bottom";
 }
 const Content = styled.main<ContentProps>`
   position: absolute;
@@ -147,7 +173,7 @@ const Content = styled.main<ContentProps>`
       width: 100%;
       height: 50px;
       background: ${props => props.navBackgroundColor};
-      transition: background 0.4s;
+      transition: background 0.2s;
       z-index: 1;
     }
   }
@@ -158,7 +184,8 @@ const Content = styled.main<ContentProps>`
     :after {
       content: "";
       position: absolute;
-      bottom: 0;
+      top: ${props => props.invertedScrollThumbAnchor === "top" ? 0 : "unset"};
+      bottom: ${props => props.invertedScrollThumbAnchor === "bottom" ? 0 : "unset"};;
       left: 0;
       width: 100%;
       height: ${props => props.invertedScrollThumbHeight}px;
@@ -176,5 +203,6 @@ const TestDiv = styled.div`
   padding: 80px;
   font-size: 24px;
   background: none;
-  &.bg { background: rgba(220,220,220,1); }
+  &.bg { background: ${Colors.grayLight}; }
+  &.bg-2 { background: ${Colors.light}; }
 `;

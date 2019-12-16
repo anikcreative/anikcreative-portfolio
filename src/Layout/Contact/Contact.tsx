@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Colors } from "../../theme/Forge";
+import { Colors } from "../../theme/Theme";
 import { ContentSectionProps } from "../ContentSectionProps";
 
 const Contact: React.FunctionComponent<ContentSectionProps> = 
