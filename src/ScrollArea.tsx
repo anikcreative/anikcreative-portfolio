@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Scrollbars, positionValues } from "react-custom-scrollbars";
 import { Colors } from "./theme/Theme";
-import { AppContext } from "./Contexts/AppContext";
+import { AppContext } from "./contexts/AppContext";
 
 export interface ScrollPositionValues extends positionValues {};
 interface ScrollAreaProps {

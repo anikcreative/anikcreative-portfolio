@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Colors } from "../theme/Theme";
+import { Colors } from "../../theme/";
 
 const NavMenu: React.FunctionComponent = (): JSX.Element => {
   return (
@@ -15,4 +15,5 @@ const StyledNavMenu = styled.div`
   display: inline-block;
   padding: 16px 20px;
   font-size: 1.5rem;
+  transition: 0.2s;
 `;

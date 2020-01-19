@@ -1,6 +1,6 @@
 import React from "react";
 import App from "./App";
-import { AppContextProvider } from "./Contexts/AppContext";
+import { AppContextProvider } from "./contexts/AppContext";
 
 const MountApp = () => {
   return (
