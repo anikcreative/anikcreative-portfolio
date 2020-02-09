@@ -8,13 +8,17 @@ interface WorkSectionProps {
 }
 export const Work: React.FC<WorkSectionProps> = (props: WorkSectionProps) => {
   return (
-    <StyledWorkSection ref={props.containerRef}>
-      hi
+    <StyledWorkSection 
+      className="work-section"
+      ref={props.containerRef}
+    >
+      Hey hows it goin
     </StyledWorkSection>
   );
 }
 export default Work;
 
 const StyledWorkSection = styled(Section)`
-  background: ${Colors.light}
+  height: 1000px;
+  background: ${Colors.light};
 `;

@@ -48,7 +48,10 @@ const Loader: React.FunctionComponent<LoaderProps> = (props: LoaderProps): JSX.E
   }
 
   return (
-    <StyledLoader loaderState={loaderState}>
+    <StyledLoader 
+      className="loader"
+      loaderState={loaderState}
+    >
       <ProgressBarTop completion={getTopCompletion(completion)}/>
       <ProgressBarRight completion={getRightCompletion(completion)}/>
       <ProgressBarBottom completion={getBottomCompletion(completion)}/>

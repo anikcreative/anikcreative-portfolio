@@ -2,10 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { Section, Heading2 } from "../../components";
 import { Colors } from "../../theme/Theme";
+import { StyledIntro } from "./Intro";
 
 
 
-const Intro: React.FunctionComponent = () => {
+const IntroWithBio: React.FunctionComponent = () => {
   return (
     <StyledIntro className="intro-text">
       <IntroInnerWrapper className="intro-text-inner-wrapper">
@@ -14,41 +15,21 @@ const Intro: React.FunctionComponent = () => {
           I design and build<br/>
           things for the web.
         </Heading2>
+        <br/>
+
+        <BioSnippet className="bio-stanza-1">
+          I'm a UX/UI designer and developer based in Houston, Texas. I help build 
+          reliable, delightful web applications with human-centered design.
+        </BioSnippet>
       </IntroInnerWrapper>
     </StyledIntro>
   );
 }
-export default Intro;
-
-export const StyledIntro = styled(Section)`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-items: flex-start;
-  justify-content: flex-end; 
-
-  position: absolute;
-  top: 0;
-
-  @media screen and (max-width: 600px) {
-    margin-top: 80px;
-  }
-
-  @media screen and (min-width: 601px) and (max-width: 800px) {
-    margin-top: 96px;
-  }
-
-  @media screen and (min-width: 801px) {
-    margin-top: 120px;
-  }
-
-  z-index: 10;
-`;
+export default IntroWithBio;
 
 const IntroInnerWrapper = styled.div`
-  color: ${Colors.white};
-  text-shadow: 4px -4px 2px #000000, 4px 4px 2px #000000, -4px -4px 2px #000000, -4px 4px 2px #000000;
-  user-select: none;
+  color: ${Colors.textDefault};
+  text-shadow: none;
 
   @media screen and (max-width: 600px) {
     max-width: 300px;
@@ -64,5 +45,19 @@ const IntroInnerWrapper = styled.div`
 `;
 
 export const IntroSpacer = styled(Section)`
-  min-height: 200vh;
+  min-height: calc(100% + 300px);
+`;
+
+const BioSnippet = styled.p`
+  @media screen and (max-width: 600px) {
+    font-size: 1.5rem;
+  }
+
+  @media screen and (min-width: 601px) and (max-width: 800px) {
+    font-size: 1.6rem;
+  }
+
+  @media screen and (min-width: 801px) {
+    font-size: 1.8rem;
+  }
 `;

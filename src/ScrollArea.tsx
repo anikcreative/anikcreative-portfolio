@@ -37,6 +37,7 @@ const ScrollArea: React.FunctionComponent<ScrollAreaProps> = (props: ScrollAreaP
     const customStyles = {
       backgroundColor: `${Colors.dark}`,
       zIndex: 2,
+      transform: 'translate3d(0)'
     };
 
     return (
@@ -53,6 +54,7 @@ const ScrollArea: React.FunctionComponent<ScrollAreaProps> = (props: ScrollAreaP
       onScrollFrame={handleScroll}
       renderTrackVertical={renderScrollbarTrack}
       renderThumbVertical={renderScrollbarThumb}
+      style={{ zIndex: 2 }}
     >
       {props.children}
     </Scrollbars>

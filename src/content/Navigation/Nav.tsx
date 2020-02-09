@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Colors } from "../../theme";
 import NavMenu from "./NavMenu";
@@ -29,7 +29,6 @@ const StyledNav = styled.nav<NavProps>`
   justify-content: space-between;
   position: absolute;
   top: 0;
-  height: 50px;
 
   background: ${Colors.accent};
   color: ${Colors.white};
