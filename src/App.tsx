@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Colors } from "./theme";
 import {
   IntroSpacer, IntroButtons,
-  IntroBackdrop, IntroBackdropInverted,
+  IntroPart1, IntroPart2, IntroPart3,
   BackdropImageSpacer,
   Nav, Footer,
   Work, Contact
@@ -35,7 +35,7 @@ const App: React.FunctionComponent = () => {
     if (contentContainerRef && contentContainerRef.current
       && footerContainerRef && footerContainerRef.current) {
       const scrollbarVerticalThumb: HTMLDivElement | null = contentContainerRef.current.querySelector('.scrollbar-thumb-vertical');
-      const introBackdrop: HTMLDivElement | null = document.querySelector('.intro-backdrop');
+      const introBackdrop: HTMLDivElement | null = document.querySelector('.intro-part-1');
       const footerBounds: ClientRect | DOMRect = footerContainerRef.current.getBoundingClientRect();
 
       if (scrollbarVerticalThumb && introBackdrop) {
@@ -109,8 +109,9 @@ const App: React.FunctionComponent = () => {
       <Loader/>
       
       <BackdropContainer className="backdrop-container">
-        <IntroBackdrop order={2} />
-        <IntroBackdropInverted order={1} />
+        <IntroPart1 order={3} />
+        <IntroPart2 order={2} />
+        <IntroPart3 order={1} />
       </BackdropContainer>
 
       <Nav

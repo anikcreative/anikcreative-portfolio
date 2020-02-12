@@ -3,7 +3,7 @@ export const Colors = {
   bright: "hsla(37, 90%, 68%, 1.0)",
   dark: "hsla(203, 16%, 10%, 1.0)",
   medium: "hsla(173, 5%, 38%, 1.0)",
-  light: "hsla(17, 54%, 95%, 1.0)",
+  light: "hsla(51, 100%, 93%, 1.0)",
   white: "hsla(0, 0%, 100%, 1.0)",
   grayLight: "hsla(0, 0%, 80%, 1.0)",
   grayMedium: "hsla(0, 0%, 67%, 1.0)",

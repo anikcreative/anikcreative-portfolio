@@ -48,59 +48,74 @@ interface IntroButtonsContainerProps {
 }
 const IntroButtonsContainer = styled.div<IntroButtonsContainerProps>`
   position: absolute;
-  color: red;
   z-index: ${props => props.zIndex};
   opacity: ${props => props.opacity};
-  transition: 0.4s;
+  transition: opacity 0.4s, font-size 0.4s;
 
-  @media screen and (max-width: 370px) {
-    top: 390px;
-    left: 40px;
+  @media screen and (max-width: 450px) {
+    top: calc(50% + 24px);
+    left: 20px;
 
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 
-  @media screen and (min-width: 370px) and (max-width: 600px) {
-    top: 340px;
-    left: 40px;
+  @media screen and (min-width: 450px) and (max-width: 600px) {
+    top: calc(50% + 16px);
+    left: 20px;
 
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 
-  @media screen and (min-width: 601px) and (max-width: 800px) {
-    top: 352px;
+  @media screen and (min-width: 600px) and (max-width: 800px) {
+    top: calc(50% + 24px);
     left: 40px;
 
     font-size: 1.5rem;
   }
 
-  @media screen and (min-width: 801px) and (max-width: 1064px) {
-    top: 120px;
-    left: 480px;
+  @media screen and (min-width: 800px) and (max-width: 1064px) {
+    top: calc(50% + 48px);
+    left: 40px;
 
     font-size: 1.6rem;
   }
 
   @media screen and (min-width: 1064px) {
-    top: 120px;
-    left: calc(50% - 60px);
+    top: calc(50% + 48px);
+    left: calc(50% - 512px);
 
     font-size: 1.6rem;
   }
 `;
 
 const IntroButton = styled.button`
-  border: 0;
+  display: inline-block;
 
+  border: 0;
   font-weight: 600;
   text-align: center;
   text-transform: uppercase;
 
   transition: 0.2s;
   cursor: pointer;
+  
+  @media screen and (max-width: 400px) {
+    padding: 10px 14px;
 
-  @media screen and (max-width: 800px) {
-    display: inline-block;
+    &:not(:last-child) {
+      margin: 0 16px 16px 0;
+    }
+  }
+
+  @media screen and (min-width: 400px) and (max-width: 600px) {
+    padding: 12px 18px;
+
+    &:not(:last-child) {
+      margin: 0 16px 16px 0;
+    }
+  }
+
+  @media screen and (min-width: 600px) and (max-width: 800px) {
     padding: 16px 20px;
 
     &:not(:last-child) {
@@ -108,13 +123,11 @@ const IntroButton = styled.button`
     }
   }
 
-  @media screen and (min-width: 801px) {
-    display: block;
-    width: 240px;
-    height: 56px;
+  @media screen and (min-width: 800px) {
+    padding: 18px 32px;
 
     &:not(:last-child) {
-      margin-bottom: 20px;
+      margin: 0 16px 16px 0;
     }
   }
 `;
@@ -135,7 +148,7 @@ const PrimaryIntroButton = styled(IntroButton)`
 `;
 
 const SecondaryIntroButton = styled(IntroButton)`
-  background: ${Colors.white};
+  background: hsla(0, 0%, 100%, 0.9);
   border: 1px solid ${Colors.accent};
   box-shadow: 0 0 0 0 hsla(37, 90%, 100%, 0.2);
 
@@ -143,9 +156,8 @@ const SecondaryIntroButton = styled(IntroButton)`
 
   &:hover,
   &:active {
+    background: hsla(0, 0%, 100%, 1.0);
     box-shadow: 0 0 0 4px hsla(356, 60%, 55%, 0.3);
     text-shadow: 0 0 2px hsla(356, 60%, 55%, 0.2);
-
-    color: ${Colors.accent};
   }
 `;
