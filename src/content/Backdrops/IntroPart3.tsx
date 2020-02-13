@@ -17,7 +17,7 @@ export const IntroPart3: React.FC<BackdropInstanceProps> = (props: BackdropInsta
         textColor={Colors.accent}
       >
         <IntroMessage className="intro-3-message">
-          I've helped build enterprise web applications used internationally. Here is some of my recent work.
+          I'm currently focusing on human-centered design for enterprise web applications. Keep scrolling to see some of my recent work.
         </IntroMessage>
       </Intro>
       <LeftMarginDecoration />

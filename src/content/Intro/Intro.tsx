@@ -70,7 +70,7 @@ const IntroInnerWrapper = styled.div<IntroInnerWrapperProps>`
   }
 
   @media screen and (min-width: 800px) {
-    max-width: 480px;
+    max-width: 600px;
     margin-top: -60px;
   }
 `;

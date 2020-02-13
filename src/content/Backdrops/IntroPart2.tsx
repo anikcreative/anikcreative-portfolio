@@ -34,7 +34,7 @@ export const IntroPart2: React.FC<BackdropInstanceProps> = (props: BackdropInsta
     >
       <Intro>
         <IntroMessage className="intro-2-message">
-          I use human-centered design to build reliable, delightful experiences for the web.
+          I love finding ways to make products and experiences intuitive, inclusive, reliable, and memorable.
         </IntroMessage>
       </Intro>
     </Backdrop>

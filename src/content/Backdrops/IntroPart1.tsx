@@ -40,7 +40,7 @@ export const IntroPart1: React.FC<BackdropInstanceProps> = (props: BackdropInsta
         textShadow={textShadowSetting}
       >
         <IntroMessage className="intro-1-message">
-          I'm a user experience (UX) designer and web developer. I'm currently based in Houston, Texas.
+          I'm a designer and developer from Houston, Texas. I'm passionate about user experience and usability.
         </IntroMessage>
       </Intro>
       <Screen />
