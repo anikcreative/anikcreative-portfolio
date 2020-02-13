@@ -17,7 +17,6 @@ import { AppContext } from "./contexts/AppContext";
 const App: React.FunctionComponent = () => {
   const appContext = useContext(AppContext);
   const [borderColor, setBorderColor] = useState<string>(Colors.accent);
-  const [navVisible, setNavVisible] = useState<boolean>(false);
   const [introButtonsVisible, setIntroButtonsVisible] = useState<boolean>(true);
 
   const [invertedScrollThumbHeight, setInvertedScrollThumbHeight] = useState<number>(0);
@@ -65,13 +64,6 @@ const App: React.FunctionComponent = () => {
     setTimeout(calculateInvertedScrollThumbHeight, 500)
   }, []);
 
-  // Determine in nav menu should be shown (at top) based on current scroll position
-  const determineNavVisibility = (scrollTop: number) => {
-    const navVisibilityUpperLimit = window.innerHeight + 160
-    if (scrollTop < navVisibilityUpperLimit) setNavVisible(false);
-    else setNavVisible(true);
-  }
-
   // Determine in intro buttons should be shown (at top) based on current scroll position
   const determineIntroButtonsVisibility = (scrollTop: number) => {
     if (worksContainerRef && worksContainerRef.current
@@ -88,7 +80,6 @@ const App: React.FunctionComponent = () => {
   const handleScroll = () => {
     const scrollTop: number = appContext.currentScrollTop;
 
-    determineNavVisibility(scrollTop);
     determineIntroButtonsVisibility(scrollTop);
     calculateInvertedScrollThumbHeight();
     
@@ -115,7 +106,6 @@ const App: React.FunctionComponent = () => {
       </BackdropContainer>
 
       <Nav
-        visible={navVisible}
         backgroundColor={Colors.light}
         textColor={Colors.textDefault}
       />
