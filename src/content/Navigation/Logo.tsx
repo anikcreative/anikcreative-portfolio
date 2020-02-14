@@ -42,7 +42,6 @@ export default Logo;
 const StyledLogo = styled.svg`
   height: 32px;
   transition: 0.2s;
-  cursor: pointer;
 
   .st0, .st1, .st2, .st3,
   path {
@@ -63,22 +62,5 @@ const StyledLogo = styled.svg`
     stroke: #000000;
     opacity: 0.8;
     stroke-width: 2;
-  }
-
-  &:hover {
-    transform: rotate(-2deg);
-
-    .st1 {
-      fill: #80ddff;
-    }
-    .st2 {
-      fill: ${Colors.bright};
-    }
-    .st3 {
-      fill: none;
-      stroke: ${Colors.accent};
-      opacity: 0.8;
-      stroke-width: 2;
-    }
   }
 `;
