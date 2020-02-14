@@ -6,7 +6,6 @@ import { Colors } from "../../theme/Theme";
 
 
 export const IntroPart3: React.FC<BackdropInstanceProps> = (props: BackdropInstanceProps) => {
-
   return (
     <Backdrop
       className="intro-part-3"

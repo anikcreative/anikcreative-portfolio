@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Colors } from "../../theme";
 
 export const Logo = () => (
   <StyledLogo 
@@ -40,6 +41,13 @@ export default Logo;
 
 const StyledLogo = styled.svg`
   height: 32px;
+  transition: 0.2s;
+  cursor: pointer;
+
+  .st0, .st1, .st2, .st3,
+  path {
+    transition: 0.2s;
+  }
   
   .st0 {
     enable-background: new;
@@ -48,7 +56,7 @@ const StyledLogo = styled.svg`
     fill: #47D1A7;
   }
   .st2 {
-    fill: #D14751;
+    fill: ${Colors.accent};
   }
   .st3 {
     fill: none;
@@ -57,5 +65,20 @@ const StyledLogo = styled.svg`
     stroke-width: 2;
   }
 
-  &:hover {}
+  &:hover {
+    transform: rotate(-2deg);
+
+    .st1 {
+      fill: #80ddff;
+    }
+    .st2 {
+      fill: ${Colors.bright};
+    }
+    .st3 {
+      fill: none;
+      stroke: ${Colors.accent};
+      opacity: 0.8;
+      stroke-width: 2;
+    }
+  }
 `;

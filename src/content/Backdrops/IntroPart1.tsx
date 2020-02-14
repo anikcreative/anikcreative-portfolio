@@ -10,10 +10,10 @@ import { __IMAGES__ } from "../../images";
 export const IntroPart1: React.FC<BackdropInstanceProps> = (props: BackdropInstanceProps) => {
   const appContext = useContext(AppContext);
   const [heightAsPercentage, setHeightAsPercentage] = useState<number>(100);
-  const introPaneHeight: number = window.innerHeight - 4;
   const textShadowSetting: string = "4px -4px 2px #000000, 4px 4px 2px #000000, -4px -4px 2px #000000, -4px 4px 2px #000000";
 
   const calculateHeightAsPercentage = (scrollTop: number) => {
+    const introPaneHeight: number = window.innerHeight - 4;
     if (scrollTop === 0) setHeightAsPercentage(100);
     else {
       const difference = (scrollTop > introPaneHeight) ? 100 : (100 * (scrollTop / introPaneHeight));

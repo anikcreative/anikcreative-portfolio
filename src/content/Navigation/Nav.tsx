@@ -50,7 +50,7 @@ const StyledNav = styled.nav<StyledNavProps>`
   position: absolute;
   
   top: 0;
-  padding: 8px 0;
+  padding: 10px 16px;
 
   background: ${Colors.light};
   color: ${Colors.white};

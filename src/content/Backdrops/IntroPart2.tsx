@@ -9,10 +9,10 @@ import { Colors } from "../../theme/Theme";
 export const IntroPart2: React.FC<BackdropInstanceProps> = (props: BackdropInstanceProps) => {
   const appContext = useContext(AppContext);
   const [heightAsPercentage, setHeightAsPercentage] = useState<number>(100);
-  const limit: number = (2 * window.innerHeight) - 4;
-  const introPaneHeight: number = window.innerHeight - 4;
   
   const calculateHeightAsPercentage = (scrollTop: number) => {
+    const limit: number = (2 * window.innerHeight) - 4;
+    const introPaneHeight: number = window.innerHeight - 4;
     if (scrollTop <= introPaneHeight) setHeightAsPercentage(100);
     else {
       const difference = (scrollTop > limit) ? 100 : (100 * ((scrollTop - introPaneHeight) / introPaneHeight));
