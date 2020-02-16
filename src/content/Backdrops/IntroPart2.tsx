@@ -29,10 +29,12 @@ export const IntroPart2: React.FC<BackdropInstanceProps> = (props: BackdropInsta
     <Backdrop
       className="intro-part-2"
       zIndex={props.order}
-      backgroundColor={Colors.white}
+      backgroundColor={Colors.bright}
       heightAsPercentage={heightAsPercentage}
     >
-      <Intro>
+      <Intro
+        textColor={Colors.dark}
+      >
         <IntroMessage className="intro-2-message">
           I love finding ways to make products and experiences intuitive, inclusive, reliable, and memorable.
         </IntroMessage>
