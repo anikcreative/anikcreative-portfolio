@@ -1,7 +1,7 @@
 {
   "name": "anikcreative-portfolio",
   "version": "0.2.0",
-  "homepage": "https://anikcreative.github.io/anikcreative-portfolio/",
+  "homepage": "https://anikcreative.github.io/",
   "private": true,
   "dependencies": {
     "@types/jest": "^24.0.23",
@@ -26,7 +26,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -b master -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
