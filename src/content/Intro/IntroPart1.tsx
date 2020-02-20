@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
-import Backdrop, { BackdropInstanceProps } from "./Backdrop";
-import { Intro, IntroMessage } from "../../content";
+import Backdrop, { BackdropInstanceProps } from "../Backdrops/Backdrop";
+import { Intro, IntroMessage } from "..";
 import { AppContext } from "../../contexts/AppContext";
 import { Colors } from "../../theme/Theme";
 import { __IMAGES__ } from "../../images";
@@ -40,7 +40,8 @@ export const IntroPart1: React.FC<BackdropInstanceProps> = (props: BackdropInsta
         textShadow={textShadowSetting}
       >
         <IntroMessage className="intro-1-message">
-          I'm a designer and developer from Houston, Texas. I'm passionate about user experience and usability.
+          Hello, I'm Anik. I'm a designer and developer who's passionate 
+          about human-centered design for the web.
         </IntroMessage>
       </Intro>
       <Screen />
@@ -57,6 +58,6 @@ const Screen = styled.div`
   height: 100%;
 
   background: #000000;
-  opacity: 0.3;
+  opacity: 0.0;
   z-index: 5;
 `;

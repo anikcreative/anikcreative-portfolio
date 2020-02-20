@@ -53,38 +53,107 @@ const IntroButtonsContainer = styled.div<IntroButtonsContainerProps>`
   transition: opacity 0.4s, font-size 0.4s;
 
   @media screen and (max-width: 450px) {
-    top: calc(50% + 24px);
+    top: calc(50% + 48px);
     left: 20px;
 
     font-size: 1.3rem;
   }
 
   @media screen and (min-width: 450px) and (max-width: 600px) {
-    top: calc(50% + 16px);
     left: 20px;
-
     font-size: 1.3rem;
+
+    @media (max-height: 300px) {
+      top: calc(50% + 24px);
+      font-size: 1.3rem;
+    }
+
+    @media (min-height: 300px) and (max-height: 456px) {
+      top: calc(50% + 24px);
+      font-size: 1.4rem;
+    }
+
+    @media (min-height: 456px) and (max-height: 548px) {
+      top: calc(50% + 40px);
+      font-size: 1.5rem;
+    }
+
+    @media (min-height: 548px) {
+      top: calc(50% + 32px);
+      font-size: 1.5rem;
+    }
   }
 
   @media screen and (min-width: 600px) and (max-width: 800px) {
-    top: calc(50% + 24px);
     left: 40px;
 
-    font-size: 1.5rem;
+    @media (max-height: 300px) {
+      top: calc(50% + 16px);
+      font-size: 1.3rem;
+    }
+
+    @media (min-height: 300px) and (max-height: 456px) {
+      top: calc(50% + 32px);
+      font-size: 1.4rem;
+    }
+
+    @media (min-height: 456px) and (max-height: 548px) {
+      top: calc(50% + 40px);
+      font-size: 1.5rem;
+    }
+
+    @media (min-height: 548px) {
+      top: calc(50% + 60px);
+      font-size: 1.5rem;
+    }
   }
 
   @media screen and (min-width: 800px) and (max-width: 1064px) {
-    top: calc(50% + 48px);
     left: 40px;
 
-    font-size: 1.6rem;
+    @media (max-height: 300px) {
+      top: calc(50% + 10px);
+      font-size: 1.3rem;
+    }
+
+    @media (min-height: 300px) and (max-height: 456px) {
+      top: calc(50% + 32px);
+      font-size: 1.4rem;
+    }
+
+    @media (min-height: 456px) and (max-height: 548px) {
+      top: calc(50% + 48px);
+      font-size: 1.5rem;
+    }
+
+    @media (min-height: 548px) {
+      top: calc(50% + 48px);
+      font-size: 1.6rem;
+    }
   }
 
   @media screen and (min-width: 1064px) {
-    top: calc(50% + 48px);
     left: calc(50% - 512px);
+    
+    @media (max-height: 300px) {
+      top: calc(50% + 10px);
+      font-size: 1.3rem;
+    }
 
-    font-size: 1.6rem;
+    @media (min-height: 300px) and (max-height: 456px) {
+      top: calc(50% + 32px);
+      font-size: 1.4rem;
+    }
+
+    @media (min-height: 456px) and (max-height: 548px) {
+      top: calc(50% + 48px);
+      font-size: 1.5rem;
+    }
+
+    @media (min-height: 548px) {
+      top: calc(50% + 48px);
+      font-size: 1.6rem;
+    }
   }
 `;
 

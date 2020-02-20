@@ -9,9 +9,9 @@ export { default as Contact } from "./Contact/Contact";
 
 export { default as Backdrop } from "./Backdrops/Backdrop";
 export { BackdropImageSpacer } from "./Backdrops/BackdropImageSpacer";
-export { default as IntroPart1 } from "./Backdrops/IntroPart1";
-export { default as IntroPart2 } from "./Backdrops/IntroPart2";
-export { default as IntroPart3 } from "./Backdrops/IntroPart3";
+export { default as IntroPart1 } from "./Intro/IntroPart1";
+export { default as IntroPart2 } from "./Intro/IntroPart2";
+export { default as IntroPart3 } from "./Intro/IntroPart3";
 
 export { default as Work } from "./Work";
 

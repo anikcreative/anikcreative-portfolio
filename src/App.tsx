@@ -3,10 +3,10 @@ import styled from "styled-components";
 import { Colors } from "./theme";
 import {
   IntroSpacer, IntroButtons,
-  IntroPart1, IntroPart2, IntroPart3,
+  IntroPart1, IntroPart2,
   BackdropImageSpacer,
   Nav, Footer,
-  Work, Contact
+  About, Work, Contact
 } from "./content";
 import ScrollArea from "./ScrollArea";
 import Loader from "./Loader";
@@ -25,7 +25,7 @@ const App: React.FunctionComponent = () => {
   // Container refs for each section
   const introButtonsRef = useRef<HTMLDivElement>(null);
   const contentContainerRef = useRef<HTMLDivElement>(null);
-  const worksContainerRef = useRef<HTMLDivElement>(null);
+  const aboutContainerRef = useRef<HTMLDivElement>(null);
   const contactContainerRef = useRef<HTMLDivElement>(null);
   const footerContainerRef = useRef<HTMLDivElement>(null);
 
@@ -65,11 +65,11 @@ const App: React.FunctionComponent = () => {
   }, []);
 
   // Determine in intro buttons should be shown (at top) based on current scroll position
-  const determineIntroButtonsVisibility = (scrollTop: number) => {
-    if (worksContainerRef && worksContainerRef.current
+  const determineIntroButtonsVisibility = () => {
+    if (aboutContainerRef && aboutContainerRef.current
       && introButtonsRef && introButtonsRef.current) {
       const introButtonsBottom = introButtonsRef.current.getBoundingClientRect().bottom;
-      const worksContainerTop = worksContainerRef.current.getBoundingClientRect().top;
+      const worksContainerTop = aboutContainerRef.current.getBoundingClientRect().top;
 
       if (introButtonsBottom >= worksContainerTop - 20) setIntroButtonsVisible(false);
       else setIntroButtonsVisible(true);
@@ -80,7 +80,7 @@ const App: React.FunctionComponent = () => {
   const handleScroll = () => {
     const scrollTop: number = appContext.currentScrollTop;
 
-    determineIntroButtonsVisibility(scrollTop);
+    determineIntroButtonsVisibility();
     calculateInvertedScrollThumbHeight();
     
     if (footerContainerRef && footerContainerRef.current
@@ -100,9 +100,8 @@ const App: React.FunctionComponent = () => {
       <Loader/>
       
       <BackdropContainer className="backdrop-container">
-        <IntroPart1 order={3} />
-        <IntroPart2 order={2} />
-        <IntroPart3 order={1} />
+        <IntroPart1 order={5} />
+        <IntroPart2 order={4} />
       </BackdropContainer>
 
       <Nav
@@ -122,7 +121,9 @@ const App: React.FunctionComponent = () => {
         />
         <ScrollArea>
           <IntroSpacer />
-          <Work containerRef={worksContainerRef} />
+
+          <About containerRef={aboutContainerRef} />
+          <Work />
 
           <TestDiv className="bg">Hi what's up</TestDiv>
           <TestDiv>Hi what's up</TestDiv>

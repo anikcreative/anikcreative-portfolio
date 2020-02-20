@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Backdrop, { BackdropInstanceProps } from "./Backdrop";
-import { Intro, IntroMessage } from "../";
+import Backdrop, { BackdropInstanceProps } from "../Backdrops/Backdrop";
 import { Colors } from "../../theme/Theme";
 
 
@@ -12,15 +11,6 @@ export const IntroPart3: React.FC<BackdropInstanceProps> = (props: BackdropInsta
       zIndex={props.order}
       backgroundColor={Colors.light}
     >
-      <Intro
-        textColor={Colors.accent}
-      >
-        <IntroMessage className="intro-3-message">
-          I'm currently focusing on human-centered design for enterprise web applications. Keep scrolling to see some of my recent work.
-        </IntroMessage>
-      </Intro>
-      <LeftMarginDecoration />
-      <RightMarginDecoration />
     </Backdrop>
   );
 }

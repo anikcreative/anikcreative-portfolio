@@ -34,7 +34,7 @@ const Backdrop: React.FC<BackdropProps> = (props: BackdropProps): JSX.Element =>
   useLayoutEffect(getViewportSize, [appContext.viewportWidth]);
 
   const renderImageSrc = () => {
-    return `images/${props.image}_${viewportSize}.jpg`;
+    return `images/${props.image}/${props.image}_${viewportSize}.jpg`;
   }
 
   return (
