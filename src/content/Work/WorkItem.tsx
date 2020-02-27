@@ -63,11 +63,19 @@ export const WorkItem: React.FC<WorkItemProps> = (props: WorkItemProps) => {
 const WorkItemContainer = styled.div`
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
   align-items: stretch;
   
   position: relative;
-  margin: 80px 0 120px;
 
   z-index: 1;
+
+  @media screen and (max-width: 600px) {
+    flex-wrap: wrap;
+    margin: 60px 0 72px;
+  }
+
+  @media screen and (min-width: 600px) {
+    flex-wrap: nowrap;
+    margin: 80px 0 120px;
+  }
 `;

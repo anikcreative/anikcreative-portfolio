@@ -20,9 +20,6 @@ export const WorkItemImage: React.FC<WorkItemImageProps> = (props: WorkItemImage
 const WorkItemImageContainer = styled.div<WorkItemAnimationProps>`
   position: relative;
   flex-shrink: 0;
-  margin-right: 40px;
-  top: 0;
-  left: 0;
   
   opacity: ${props => props.show ? 1.0 : 0.0};
 
@@ -30,19 +27,51 @@ const WorkItemImageContainer = styled.div<WorkItemAnimationProps>`
   overflow: visible;
   transition: 0.2s;
 
-  width: 200px;
-  height: 240px;
-
   & > img {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: ${props => props.show ? 0 : -60}px;
+    transition: opacity 0.3s, left 0.3s, box-shadow 0.6s;
+  }
+
+  @media screen and (max-width: 600px) {
     width: 100%;
-    height: 100%;
+    height: 120px;
+    margin-bottom: 16px;
 
     border: 4px solid ${Colors.accent};
-    box-shadow: ${props => props.show ? `-8px -8px 0 0 ${Colors.bright}` : `0 -8px 0 0 transparent`};
-    transition: opacity 0.2s, left 0.3s, box-shadow 0.6s;
+  }
+
+  @media screen and (min-width: 600px) and (max-width: 800px) {
+    width: 160px;
+    height: 200px;
+    margin-right: 40px;
+
+    & > img {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: ${props => props.show ? 0 : -60}px;
+      width: 100%;
+      height: 100%;
+
+      border: 4px solid ${Colors.accent};
+      box-shadow: ${props => props.show ? `-8px -8px 0 0 ${Colors.bright}` : `0 -8px 0 0 transparent`};
+    }
+  }
+
+  @media screen and (min-width: 800px) {
+    width: 200px;
+    height: 240px;
+    margin-right: 64px;
+
+    & > img {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: ${props => props.show ? 0 : -60}px;
+      width: 100%;
+      height: 100%;
+
+      border: 4px solid ${Colors.accent};
+      box-shadow: ${props => props.show ? `-8px -8px 0 0 ${Colors.bright}` : `0 -8px 0 0 transparent`};
+    }
   }
 `;
