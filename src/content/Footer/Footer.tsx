@@ -15,10 +15,10 @@ const Footer: React.FunctionComponent<ContentSectionProps> =
 export default Footer;
 
 const StyledFooter = styled(Section)`
-  height: 96px;
+  padding: 10px 0;
 
   background: ${Colors.dark};
-  border-top: 1px dashed ${Colors.medium};
+  border-top: 1px solid #252525;
   color: ${Colors.white};
 
   font-size: 1.4rem;
