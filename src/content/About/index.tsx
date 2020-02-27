@@ -20,12 +20,9 @@ export const About: React.FC<AboutSectionProps> = (props: AboutSectionProps) => 
       </Paragraph>
       <Paragraph addSpaceAfter>
         Whether in familiar territory, or in uncharted waters, I love finding ways to interpret and analyze 
-        complex challenges. I've worked on interdisciplinary projects with artists, designers, choreographers, 
-        film directors, game developers, and all sorts of talented people. I'm always on the lookout for cool 
-        ideas on the horizon — get in touch if you have one and are looking to collaborate!
-      </Paragraph>
-      <Paragraph>
-        Keep scrolling to see some of my recent work.
+        complex challenges. I've worked with artists, designers, choreographers, film directors, game developers, 
+        and all sorts of talented people. I'm always on the lookout for cool ideas on the horizon — get in touch 
+        if you have one and are looking to collaborate!
       </Paragraph>
     </StyledAboutSection>
   );

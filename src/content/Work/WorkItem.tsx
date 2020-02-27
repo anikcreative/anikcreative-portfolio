@@ -71,11 +71,11 @@ const WorkItemContainer = styled.div`
 
   @media screen and (max-width: 600px) {
     flex-wrap: wrap;
-    margin: 60px 0 72px;
+    padding: 20px 0 40px;
   }
 
   @media screen and (min-width: 600px) {
     flex-wrap: nowrap;
-    margin: 80px 0 96px;
+    padding: 40px 0 80px;
   }
 `;

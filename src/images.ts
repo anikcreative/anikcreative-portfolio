@@ -1,4 +1,5 @@
 export const __IMAGES__: string[] = [
   "topomap",
-  "atacama"
+  "atacama",
+  "anik_wall",
 ];
