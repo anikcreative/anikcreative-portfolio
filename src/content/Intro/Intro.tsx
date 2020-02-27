@@ -66,31 +66,39 @@ const IntroInnerWrapper = styled.div<IntroInnerWrapperProps>`
     max-width: unset;
 
     @media (max-height: 300px) {
+      & {
+        margin-top: -20px;
+      }
       & > h2 {
         font-size: 1.8rem;
       }
-      margin-top: -20px;
     }
 
     @media (min-height: 300px) and (max-height: 456px) {
+      & {
+        margin-top: -48px;
+      }
       & > h2 {
         font-size: 2.0rem;
       }
-      margin-top: -32px;
     }
 
     @media (min-height: 456px) and (max-height: 548px) {
+      & {
+        margin-top: -64px;
+      }
       & > h2 {
         font-size: 2.3rem;
       }
-      margin-top: -64px;
     }
 
     @media (min-height: 548px) {
+      & {
+        margin-top: -80px;
+      }
       & > h2 {
         font-size: 2.6rem;
       }
-      margin-top: -80px;
     }
   }
 
@@ -98,31 +106,39 @@ const IntroInnerWrapper = styled.div<IntroInnerWrapperProps>`
     max-width: 600px;
 
     @media (max-height: 300px) {
+      & {
+        margin-top: -48px;
+      }
       & > h2 {
         font-size: 1.8rem;
       }
-      margin-top: -48px;
     }
 
     @media (min-height: 300px) and (max-height: 456px) {
+      & {
+        margin-top: -80px;
+      }
       & > h2 {
         font-size: 2.4rem;
       }
-      margin-top: -60px;
     }
 
     @media (min-height: 456px) and (max-height: 548px) {
+      & {
+        margin-top: -108px;
+      }
       & > h2 {
         font-size: 2.8rem;
       }
-      margin-top: -108px;
     }
 
     @media (min-height: 548px) {
+      & {
+        margin-top: -100px;
+      }
       & > h2 {
         font-size: 3.2rem;
       }
-      margin-top: -100px;
     }
   }
 
@@ -130,31 +146,39 @@ const IntroInnerWrapper = styled.div<IntroInnerWrapperProps>`
     max-width: 600px;
 
     @media (max-height: 300px) {
+      & {
+        margin-top: -36px;
+      }
       & > h2 {
         font-size: 2.2rem;
       }
-      margin-top: -24px;
     }
 
     @media (min-height: 300px) and (max-height: 456px) {
+      & {
+        margin-top: -60px;
+      }
       & > h2 {
         font-size: 2.8rem;
       }
-      margin-top: -60px;
     }
 
     @media (min-height: 456px) and (max-height: 548px) {
+      & {
+        margin-top: -100px;
+      }
       & > h2 {
         font-size: 3.4rem;
       }
-      margin-top: -100px;
     }
 
     @media (min-height: 548px) {
+      & {
+        margin-top: -136px;
+      }
       & > h2 {
         font-size: 4.0rem;
       }
-      margin-top: -136px;
     }
   }
 `;

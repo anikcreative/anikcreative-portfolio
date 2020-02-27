@@ -14,9 +14,9 @@ export const IntroPart2: React.FC<BackdropInstanceProps> = (props: BackdropInsta
       <Intro
         textColor={Colors.dark}
       >
-        <IntroMessage className="intro-2-message">
-          Hello, I'm Anik. I'm a designer and developer who's passionate 
-          about human-centered design for the web.
+        <IntroMessage className="intro-1-message">
+          Hello, I'm Anik. I'm a designer and developer exploring ways to
+          create intuitive, delightful experiences for the web.
         </IntroMessage>
       </Intro>
     </Backdrop>

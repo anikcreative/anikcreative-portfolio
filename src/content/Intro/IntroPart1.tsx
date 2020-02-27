@@ -40,8 +40,8 @@ export const IntroPart1: React.FC<BackdropInstanceProps> = (props: BackdropInsta
         textShadow={textShadowSetting}
       >
         <IntroMessage className="intro-1-message">
-          Hello, I'm Anik. I'm a designer and developer who's passionate 
-          about human-centered design for the web.
+          Hello, I'm Anik. I'm a designer and developer exploring ways to
+          create intuitive, delightful experiences for the web.
         </IntroMessage>
       </Intro>
       <Screen />

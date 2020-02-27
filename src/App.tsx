@@ -32,10 +32,10 @@ const App: React.FunctionComponent = () => {
   // Calculate inverted scroll thumb height
   const calculateInvertedScrollThumbHeight = () => {
     if (contentContainerRef && contentContainerRef.current
-      && footerContainerRef && footerContainerRef.current) {
+      && contactContainerRef && contactContainerRef.current) {
       const scrollbarVerticalThumb: HTMLDivElement | null = contentContainerRef.current.querySelector('.scrollbar-thumb-vertical');
       const introBackdrop: HTMLDivElement | null = document.querySelector('.intro-part-1');
-      const footerBounds: ClientRect | DOMRect = footerContainerRef.current.getBoundingClientRect();
+      const contactBounds: ClientRect | DOMRect = contactContainerRef.current.getBoundingClientRect();
 
       if (scrollbarVerticalThumb && introBackdrop) {
         const scrollThumbBounds: ClientRect | DOMRect = scrollbarVerticalThumb.getBoundingClientRect();
@@ -49,13 +49,13 @@ const App: React.FunctionComponent = () => {
           setInvertedScrollThumbAnchor("top");
           setInvertedScrollThumbHeight(introBackdropBounds.bottom - scrollThumbBounds.top);
         }
-        else if (scrollThumbBounds.bottom <= footerBounds.top) {
+        else if (scrollThumbBounds.bottom <= contactBounds.top) {
           setInvertedScrollThumbAnchor("bottom");
           setInvertedScrollThumbHeight(0);
         }
         else {
           setInvertedScrollThumbAnchor("bottom");
-          setInvertedScrollThumbHeight(scrollThumbBounds.bottom - footerBounds.top);
+          setInvertedScrollThumbHeight(scrollThumbBounds.bottom - contactBounds.top);
         }
       }
     }
@@ -83,9 +83,9 @@ const App: React.FunctionComponent = () => {
     determineIntroButtonsVisibility();
     calculateInvertedScrollThumbHeight();
     
-    if (footerContainerRef && footerContainerRef.current
-      && scrollTop >= footerContainerRef.current.offsetTop - window.innerHeight) {
-      setBorderColor(Colors.medium);
+    if (contactContainerRef && contactContainerRef.current
+      && scrollTop >= contactContainerRef.current.offsetTop - (window.innerHeight * 0.75)) {
+      setBorderColor(Colors.dark);
     }
     else setBorderColor(Colors.accent);
   }
@@ -123,16 +123,10 @@ const App: React.FunctionComponent = () => {
           <IntroSpacer />
 
           <About containerRef={aboutContainerRef} />
+
           <Work />
 
-          <TestDiv className="bg">Hi what's up</TestDiv>
-          <TestDiv>Hi what's up</TestDiv>
-          <TestDiv>Hi what's up</TestDiv>
-          <TestDiv className="bg">Hi what's up</TestDiv>
-          <TestDiv className="bg">Hi what's up</TestDiv>
-          <TestDiv className="bg">Hi what's up</TestDiv>
-
-          <BackdropImageSpacer />
+          {/* <BackdropImageSpacer /> */}
 
           <Contact containerRef={contactContainerRef}/>
 
@@ -208,14 +202,4 @@ const Content = styled.main<ContentProps>`
       z-index: 4;
     }
   }
-`;
-
-const TestDiv = styled.div`
-  height: 500px;
-  color: ${Colors.textDefault};
-  padding: 80px;
-  font-size: 24px;
-  background: none;
-  &.bg { background: ${Colors.grayLight}; }
-  &.bg-2 { background: ${Colors.light}; }
 `;

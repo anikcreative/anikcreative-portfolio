@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Colors } from "../../theme/Theme";
+import { Section } from "../../components";
 import { ContentSectionProps } from "../ContentSectionProps";
 
 const Contact: React.FunctionComponent<ContentSectionProps> = 
@@ -13,12 +14,9 @@ const Contact: React.FunctionComponent<ContentSectionProps> =
 }
 export default Contact;
 
-const StyledContact = styled.div`
-  width: 100%;
-  height: 500px;
+const StyledContact = styled(Section)`
+  min-height: 100%;
 
-  background: ${Colors.light};
-  color: ${Colors.textDefault};
-
-  font-size: 1.6rem;
+  background: ${Colors.dark};
+  color: ${Colors.textLight};
 `;

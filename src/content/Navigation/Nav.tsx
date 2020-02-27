@@ -15,7 +15,7 @@ const Nav: React.FunctionComponent<NavProps> = (props: NavProps): JSX.Element =>
 
   // Determine if nav should be shown, based on current scroll position
   const determineNavVisibility = (scrollTop: number) => {
-    const navVisibilityUpperLimit = (2.8 * window.innerHeight);
+    const navVisibilityUpperLimit = (2.5 * window.innerHeight);
     if (scrollTop < navVisibilityUpperLimit) setIsVisible(false);
     else setIsVisible(true);
   }
@@ -52,7 +52,7 @@ const StyledNav = styled.nav<StyledNavProps>`
   top: 0;
   padding: 10px 16px;
 
-  background: ${Colors.light};
+  background: none;
   color: ${Colors.white};
 
   opacity: ${props => props.opacity};

@@ -2,6 +2,14 @@ import React from "react";
 import { Section } from "../../components";
 import { Colors } from "../../theme";
 import styled from "styled-components";
+import {
+  ProjectInsight,
+  FloodReady,
+  FrostEnsemble,
+  MWPStudio
+} from "./WorkItems";
+
+
 
 interface WorkSectionProps {
   containerRef?: React.RefObject<HTMLDivElement>;
@@ -12,13 +20,17 @@ export const Work: React.FC<WorkSectionProps> = (props: WorkSectionProps) => {
       className="work-section"
       ref={props.containerRef}
     >
-      Hey hows it goin
+      <ProjectInsight/>
+      <FloodReady />
+      <FrostEnsemble />
+      <MWPStudio />
     </StyledWorkSection>
   );
 }
 export default Work;
 
 const StyledWorkSection = styled(Section)`
-  height: 1000px;
+  padding-top: 20px;
+  padding-bottom: 40px;
   background: ${Colors.light};
 `;

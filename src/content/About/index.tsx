@@ -13,13 +13,16 @@ export const About: React.FC<AboutSectionProps> = (props: AboutSectionProps) => 
       ref={props.containerRef}
     >
       <Paragraph addSpaceAfter>
-        I love finding ways to address complex challenges with interactions and experiences that are 
-        intuitive, inclusive, and reliable.
+        I'm a User Experience Developer at <a href="https://www.hcss.com" target="_blank">HCSS</a>, helping 
+        build enterprise web applications for the construction industry. Most of my work focuses on interaction 
+        design, front-end development with React, rapid prototyping for emerging products, and rescuing those 
+        stranded in CSS.
       </Paragraph>
       <Paragraph addSpaceAfter>
-        I'm currently a user experience developer at <a href="www.hcss.com" target="_blank">HCSS</a>.
-        I help build enterprise web applications for the construction industry, along with the 
-        design system and components library behind those products.
+        Whether in familiar territory, or in uncharted waters, I love finding ways to interpret and analyze 
+        complex challenges. I've worked on interdisciplinary projects with artists, designers, choreographers, 
+        film directors, game developers, and all sorts of talented people. I'm always on the lookout for cool 
+        ideas on the horizon — get in touch if you have one and are looking to collaborate!
       </Paragraph>
       <Paragraph>
         Keep scrolling to see some of my recent work.
@@ -30,7 +33,7 @@ export const About: React.FC<AboutSectionProps> = (props: AboutSectionProps) => 
 export default About;
 
 const StyledAboutSection = styled(Section)`
-  padding: 60px 0;
+  padding: 80px 0 120px;
   background: ${Colors.white};
 
   & > * {

@@ -64,23 +64,31 @@ const IntroButtonsContainer = styled.div<IntroButtonsContainerProps>`
     font-size: 1.3rem;
 
     @media (max-height: 300px) {
-      top: calc(50% + 24px);
-      font-size: 1.3rem;
+      & {
+        top: calc(50% + 24px);
+        font-size: 1.3rem;
+      }
     }
 
     @media (min-height: 300px) and (max-height: 456px) {
-      top: calc(50% + 24px);
-      font-size: 1.4rem;
+      & {
+        top: calc(50% + 32px);
+        font-size: 1.4rem;
+      }
     }
 
     @media (min-height: 456px) and (max-height: 548px) {
-      top: calc(50% + 40px);
-      font-size: 1.5rem;
+      & {
+        top: calc(50% + 40px);
+        font-size: 1.5rem;
+      }
     }
 
     @media (min-height: 548px) {
-      top: calc(50% + 32px);
-      font-size: 1.5rem;
+      & {
+        top: calc(50% + 32px);
+        font-size: 1.5rem;
+      }
     }
   }
 
@@ -88,23 +96,31 @@ const IntroButtonsContainer = styled.div<IntroButtonsContainerProps>`
     left: 40px;
 
     @media (max-height: 300px) {
-      top: calc(50% + 16px);
-      font-size: 1.3rem;
+      & {
+        top: calc(50% + 16px);
+        font-size: 1.3rem;
+      }
     }
 
     @media (min-height: 300px) and (max-height: 456px) {
-      top: calc(50% + 32px);
-      font-size: 1.4rem;
+      & {
+        top: calc(50% + 40px);
+        font-size: 1.4rem;
+      }
     }
 
     @media (min-height: 456px) and (max-height: 548px) {
-      top: calc(50% + 40px);
-      font-size: 1.5rem;
+      & {
+        top: calc(50% + 40px);
+        font-size: 1.5rem;
+      }
     }
 
     @media (min-height: 548px) {
-      top: calc(50% + 60px);
-      font-size: 1.5rem;
+      & {
+        top: calc(50% + 60px);
+        font-size: 1.5rem;
+      }
     }
   }
 
@@ -112,23 +128,31 @@ const IntroButtonsContainer = styled.div<IntroButtonsContainerProps>`
     left: 40px;
 
     @media (max-height: 300px) {
-      top: calc(50% + 10px);
-      font-size: 1.3rem;
+      & {
+        top: calc(50% + 24px);
+        font-size: 1.3rem;
+      }
     }
 
     @media (min-height: 300px) and (max-height: 456px) {
-      top: calc(50% + 32px);
-      font-size: 1.4rem;
+      & {
+        top: calc(50% + 32px);
+        font-size: 1.4rem;
+      }
     }
 
     @media (min-height: 456px) and (max-height: 548px) {
-      top: calc(50% + 48px);
-      font-size: 1.5rem;
+      & {
+        top: calc(50% + 48px);
+        font-size: 1.5rem;
+      }
     }
 
     @media (min-height: 548px) {
-      top: calc(50% + 48px);
-      font-size: 1.6rem;
+      & {
+        top: calc(50% + 48px);
+        font-size: 1.6rem;
+      }
     }
   }
 
@@ -136,23 +160,31 @@ const IntroButtonsContainer = styled.div<IntroButtonsContainerProps>`
     left: calc(50% - 512px);
     
     @media (max-height: 300px) {
-      top: calc(50% + 10px);
-      font-size: 1.3rem;
+      & {
+        top: calc(50% + 24px);
+        font-size: 1.3rem;
+      }
     }
 
     @media (min-height: 300px) and (max-height: 456px) {
-      top: calc(50% + 32px);
-      font-size: 1.4rem;
+      & {
+        top: calc(50% + 32px);
+        font-size: 1.4rem;
+      }
     }
 
     @media (min-height: 456px) and (max-height: 548px) {
-      top: calc(50% + 48px);
-      font-size: 1.5rem;
+      & {
+        top: calc(50% + 48px);
+        font-size: 1.5rem;
+      }
     }
 
     @media (min-height: 548px) {
-      top: calc(50% + 48px);
-      font-size: 1.6rem;
+      & {
+        top: calc(50% + 48px);
+        font-size: 1.6rem;
+      }
     }
   }
 `;

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Colors } from "../../theme/Theme";
+import { Section } from "../../components";
 import { ContentSectionProps } from "../ContentSectionProps";
 
 const Footer: React.FunctionComponent<ContentSectionProps> = 
@@ -13,12 +14,12 @@ const Footer: React.FunctionComponent<ContentSectionProps> =
 }
 export default Footer;
 
-const StyledFooter = styled.div`
-  width: 100%;
-  height: 200px;
+const StyledFooter = styled(Section)`
+  height: 96px;
 
-  background: ${Colors.medium};
+  background: ${Colors.dark};
+  border-top: 1px dashed ${Colors.medium};
   color: ${Colors.white};
 
-  font-size: 1.6rem;
+  font-size: 1.4rem;
 `;
