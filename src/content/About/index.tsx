@@ -33,10 +33,19 @@ export const About: React.FC<AboutSectionProps> = (props: AboutSectionProps) => 
 export default About;
 
 const StyledAboutSection = styled(Section)`
-  padding: 80px 0 120px;
   background: ${Colors.white};
 
   & > * {
     max-width: 600px;
+  }
+
+  @media screen and (max-width: 600px) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  @media screen and (min-width: 600px) {
+    padding-top: 80px;
+    padding-bottom: 80px;
   }
 `;
