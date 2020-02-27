@@ -50,7 +50,7 @@ const StyledNav = styled.nav<StyledNavProps>`
   position: absolute;
   
   top: 0;
-  padding: 10px 16px;
+  padding: 10px 0;
 
   background: none;
   color: ${Colors.white};
@@ -60,7 +60,11 @@ const StyledNav = styled.nav<StyledNavProps>`
   transition: background 0.2s, opacity 0.2s;
   z-index: 5;
 
-  @media screen and (max-width: 1064px) {
+  @media screen and (max-width: 600px) {
+    left: 20px;
+  }
+
+  @media screen and (min-width: 600px) and (max-width: 1064px) {
     left: 40px;
   }
 
