@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { WorkItemImage } from "./WorkItemImage";
-import { WorkItemDetail, WorkItemDetailProps } from "./WorkItemDetail";
+import { WorkItemDetail } from "./WorkItemDetail";
+import { WorkItemInformation } from "./WorkItems/WorkItemData";
 import { AppContext } from "../../contexts/AppContext";
 import debounce from "lodash/debounce";
 
@@ -10,7 +11,7 @@ import debounce from "lodash/debounce";
 export interface WorkItemAnimationProps {
   show: boolean;
 }
-interface WorkItemProps extends WorkItemDetailProps {
+interface WorkItemProps extends WorkItemInformation {
   imgURL?: string;
   className?: string;
 }
@@ -55,6 +56,8 @@ export const WorkItem: React.FC<WorkItemProps> = (props: WorkItemProps) => {
         title={props.title}
         subtitle={props.subtitle}
         description={props.description}
+        detailsButtonLabel={props.detailsButtonLabel}
+        detailsLink={props.detailsLink}
       />
     </WorkItemContainer>
   );

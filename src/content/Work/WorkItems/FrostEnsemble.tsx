@@ -8,6 +8,9 @@ export const FrostEnsemble = () => {
       title={WorkItem_FrostEnsemble.title}
       subtitle={WorkItem_FrostEnsemble.subtitle}
       description={WorkItem_FrostEnsemble.description}
+      imgURL={"images/workitems/frostensemble.jpg"}
+      detailsButtonLabel={WorkItem_FrostEnsemble.detailsButtonLabel}
+      detailsLink={WorkItem_FrostEnsemble.detailsLink}
       className="frost-rec-ensemble"
     />
   );

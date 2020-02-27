@@ -12,7 +12,10 @@ export const WorkItemImage: React.FC<WorkItemImageProps> = (props: WorkItemImage
       show={props.show}
       className="work-item-image-container"
     >
-      <img src={props.src}/>
+      <WorkItemImageFrame
+        className="work-item-image-frame" 
+        imageSrc={props.src}
+      />
     </WorkItemImageContainer>
   );
 }
@@ -27,7 +30,7 @@ const WorkItemImageContainer = styled.div<WorkItemAnimationProps>`
   overflow: visible;
   transition: 0.2s;
 
-  & > img {
+  & > .work-item-image-frame {
     transition: opacity 0.3s, left 0.3s, box-shadow 0.6s;
   }
 
@@ -35,8 +38,6 @@ const WorkItemImageContainer = styled.div<WorkItemAnimationProps>`
     width: 100%;
     height: 120px;
     margin-bottom: 16px;
-
-    border: 4px solid ${Colors.accent};
   }
 
   @media screen and (min-width: 600px) and (max-width: 800px) {
@@ -44,7 +45,7 @@ const WorkItemImageContainer = styled.div<WorkItemAnimationProps>`
     height: 200px;
     margin-right: 40px;
 
-    & > img {
+    & > .work-item-image-frame {
       display: block;
       position: absolute;
       top: 0;
@@ -52,7 +53,6 @@ const WorkItemImageContainer = styled.div<WorkItemAnimationProps>`
       width: 100%;
       height: 100%;
 
-      border: 4px solid ${Colors.accent};
       box-shadow: ${props => props.show ? `-8px -8px 0 0 ${Colors.bright}` : `0 -8px 0 0 transparent`};
     }
   }
@@ -62,7 +62,7 @@ const WorkItemImageContainer = styled.div<WorkItemAnimationProps>`
     height: 240px;
     margin-right: 64px;
 
-    & > img {
+    & > .work-item-image-frame {
       display: block;
       position: absolute;
       top: 0;
@@ -70,8 +70,18 @@ const WorkItemImageContainer = styled.div<WorkItemAnimationProps>`
       width: 100%;
       height: 100%;
 
-      border: 4px solid ${Colors.accent};
       box-shadow: ${props => props.show ? `-8px -8px 0 0 ${Colors.bright}` : `0 -8px 0 0 transparent`};
     }
   }
+`;
+
+interface WorkItemImageComponentProps {
+  imageSrc: string;
+}
+const WorkItemImageFrame = styled.div<WorkItemImageComponentProps>`
+  background: ${Colors.white};
+  background: url(${props => props.imageSrc});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 `;

@@ -1,7 +1,9 @@
-interface WorkItemInformation {
+export interface WorkItemInformation {
   title: string;
   subtitle: string;
   description: string;
+  detailsButtonLabel?: string
+  detailsLink?: string;
 }
 
 // Project Insight
@@ -24,6 +26,8 @@ export const WorkItem_FloodReady: WorkItemInformation = {
     needs and frustrations expressed by Fort Bend county residents in the wake of 
     Hurricane Harvey and the ensuing devastation in Houston.
   `,
+  detailsButtonLabel: `Read more about this project`,
+  detailsLink: 'https://www.behance.net/gallery/61525575/Fort-Bend-FloodReady-App',
 }
 
 // Frost Recording Ensemble
@@ -34,7 +38,9 @@ export const WorkItem_FrostEnsemble: WorkItemInformation = {
     As the premier pop music ensemble at the University of Miami underwent a kind of 
     rebirth, I played a key role in its rebranding, designing new logos, album covers, 
     and a variety of assets for social media platforms.
-  `
+  `,
+  detailsButtonLabel: `More details and examples`,
+  detailsLink: 'https://anikcreative.myportfolio.com/frostensemble',
 }
 
 // MWP Studio
@@ -45,5 +51,7 @@ export const WorkItem_MWPStudio: WorkItemInformation = {
     When policies promoting responsible and equitable use of educational resources were 
     met with confusion and lack of buy-in from students, I took the initiative to ensure 
     effective communication of policy changes and their purpose.
-  `
+  `,
+  detailsButtonLabel: `More details about this project`,
+  detailsLink: 'https://anikcreative.myportfolio.com/mwpstudiopol',
 }

@@ -4,15 +4,31 @@ import { Paragraph } from "../../components/TextContent/Text";
 import { Heading3 } from "../../components/TextContent/Headings";
 import { WorkItemAnimationProps } from "./WorkItem";
 import { Colors } from "../../theme"; 
+import { WorkItemInformation } from "./WorkItems/WorkItemData";
+import { Button } from "../../components/Interactive/Button";
 
-export interface WorkItemDetailProps {
-  title: string;
-  subtitle: string;
-  description: string;
-}
 
-export interface WorkItemDetailComponentProps extends WorkItemAnimationProps, WorkItemDetailProps {}
+export interface WorkItemDetailComponentProps extends WorkItemAnimationProps, WorkItemInformation {}
 export const WorkItemDetail: React.FC<WorkItemDetailComponentProps> = (props: WorkItemDetailComponentProps) => {
+
+  const renderDetailsLink = () => {
+    if (props.detailsButtonLabel && props.detailsLink) return (
+      <MoreDetailsLinkWrapper 
+        href={props.detailsLink}
+        target="_blank"
+      >
+        <Button importance="primary">
+          {props.detailsButtonLabel}
+        </Button>
+      </MoreDetailsLinkWrapper>
+    );
+    else return (
+      <ComingSoonMessage>
+        More details coming soon!
+      </ComingSoonMessage>
+    );
+  }
+
   return (
     <WorkItemDetailContainer 
       show={props.show}
@@ -23,6 +39,7 @@ export const WorkItemDetail: React.FC<WorkItemDetailComponentProps> = (props: Wo
       <WorkItemDescription className="detail-description">
         {props.description}
       </WorkItemDescription>
+      {renderDetailsLink()}
     </WorkItemDetailContainer>
   );
 }
@@ -58,4 +75,14 @@ const WorkItemSubtitle = styled.div`
 
 const WorkItemDescription = styled(Paragraph)`
   margin: 24px 0;
+`;
+
+const MoreDetailsLinkWrapper = styled.a`
+  display: inline-block;
+  margin-top: 8px;
+`;
+
+const ComingSoonMessage = styled(Paragraph)`
+  margin-top: 8px;
+  color: ${Colors.medium}
 `;
