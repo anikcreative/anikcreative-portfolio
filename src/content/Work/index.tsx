@@ -31,6 +31,6 @@ export default Work;
 
 const StyledWorkSection = styled(Section)`
   padding-top: 20px;
-  padding-bottom: 40px;
+  padding-bottom: 0;
   background: ${Colors.light};
 `;

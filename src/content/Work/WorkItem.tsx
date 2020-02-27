@@ -76,6 +76,6 @@ const WorkItemContainer = styled.div`
 
   @media screen and (min-width: 600px) {
     flex-wrap: nowrap;
-    margin: 80px 0 120px;
+    margin: 80px 0 96px;
   }
 `;
