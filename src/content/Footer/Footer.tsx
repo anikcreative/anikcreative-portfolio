@@ -8,18 +8,18 @@ const Footer: React.FunctionComponent<ContentSectionProps> =
   (props: ContentSectionProps): JSX.Element => {
   return (
     <StyledFooter ref={props.containerRef}>
-      Sup. this is a footer.
+      © 2020, Anik Bhattacharya
     </StyledFooter>
   );
 }
 export default Footer;
 
 const StyledFooter = styled(Section)`
-  padding: 10px 0;
+  padding: 12px 0 10px;
 
   background: ${Colors.dark};
   border-top: 1px solid #252525;
-  color: ${Colors.white};
+  color: ${Colors.textLight};
 
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 `;

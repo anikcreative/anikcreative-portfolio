@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { Section } from "../../components";
 import { WorkItemImage } from "./WorkItemImage";
 import { WorkItemDetail } from "./WorkItemDetail";
 import { WorkItemInformation } from "./WorkItems/WorkItemData";
 import { AppContext } from "../../contexts/AppContext";
+import { Colors } from "../../theme";
 import debounce from "lodash/debounce";
 
 
@@ -50,7 +52,10 @@ export const WorkItem: React.FC<WorkItemProps> = (props: WorkItemProps) => {
       className={`work-item work-item-container ${props.className ? `${props.className}-work-item` : ''}`}
       ref={workItemRef}
     >
-      <WorkItemImage show={showImage} src={props.imgURL || ""} />
+      <WorkItemImage 
+        show={showImage}
+        src={props.imgURL || ""} 
+      />
       <WorkItemDetail 
         show={showDetail}
         title={props.title}
@@ -63,22 +68,26 @@ export const WorkItem: React.FC<WorkItemProps> = (props: WorkItemProps) => {
   );
 }
 
-const WorkItemContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  
+const WorkItemContainer = styled(Section)`  
   position: relative;
+  border-bottom: 1px solid ${Colors.accent};
 
   z-index: 1;
 
   @media screen and (max-width: 600px) {
-    flex-wrap: wrap;
-    padding: 20px 0 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 
-  @media screen and (min-width: 600px) {
-    flex-wrap: nowrap;
-    padding: 40px 0 80px;
+  @media screen and (min-width: 600px) and (max-width: 800px) {
+    padding-top: 32px;
+    padding-bottom: 32px;
+    font-size: 1.5rem;
+  }
+
+  @media screen and (min-width: 800px) {
+    padding-top: 36px;
+    padding-bottom: 36px;
+    font-size: 1.6rem;
   }
 `;

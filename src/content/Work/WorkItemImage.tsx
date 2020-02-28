@@ -22,63 +22,25 @@ export const WorkItemImage: React.FC<WorkItemImageProps> = (props: WorkItemImage
 
 const WorkItemImageContainer = styled.div<WorkItemAnimationProps>`
   position: relative;
-  flex-shrink: 0;
+  height: 180px;
+  margin-bottom: 36px;
   
   opacity: ${props => props.show ? 1.0 : 0.0};
+  filter: saturate(${props => props.show ? 1.0 : 0.2});
 
   z-index: 1;
-  overflow: visible;
-  transition: 0.2s;
-
-  & > .work-item-image-frame {
-    transition: opacity 0.3s, left 0.3s, box-shadow 0.6s;
-  }
-
-  @media screen and (max-width: 600px) {
-    width: 100%;
-    height: 120px;
-    margin-bottom: 16px;
-  }
-
-  @media screen and (min-width: 600px) and (max-width: 800px) {
-    width: 160px;
-    height: 200px;
-    margin-right: 40px;
-
-    & > .work-item-image-frame {
-      display: block;
-      position: absolute;
-      top: 0;
-      left: ${props => props.show ? 0 : -60}px;
-      width: 100%;
-      height: 100%;
-
-      box-shadow: ${props => props.show ? `-8px -8px 0 0 ${Colors.bright}` : `0 -8px 0 0 transparent`};
-    }
-  }
-
-  @media screen and (min-width: 800px) {
-    width: 200px;
-    height: 240px;
-    margin-right: 64px;
-
-    & > .work-item-image-frame {
-      display: block;
-      position: absolute;
-      top: 0;
-      left: ${props => props.show ? 0 : -60}px;
-      width: 100%;
-      height: 100%;
-
-      box-shadow: ${props => props.show ? `-8px -8px 0 0 ${Colors.bright}` : `0 -8px 0 0 transparent`};
-    }
-  }
+  overflow: hidden;
+  transition: 0.4s;
 `;
 
-interface WorkItemImageComponentProps {
+interface WorkItemImageFrameProps {
   imageSrc: string;
 }
-const WorkItemImageFrame = styled.div<WorkItemImageComponentProps>`
+const WorkItemImageFrame = styled.div<WorkItemImageFrameProps>`
+  width: 100%;
+  max-width: 600px;
+  height: 100%; 
+
   background: ${Colors.white};
   background: url(${props => props.imageSrc});
   background-size: cover;

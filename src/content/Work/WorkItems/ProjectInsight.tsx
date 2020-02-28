@@ -9,6 +9,7 @@ export const ProjectInsight = () => {
     <WorkItem
       title={WorkItem_ProjectInsight.title}
       subtitle={WorkItem_ProjectInsight.subtitle}
+      imgURL={"images/workitems/projectinsight.jpg"}
       description={WorkItem_ProjectInsight.description}
       className="project-insight"
     />
